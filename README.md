@@ -1,4 +1,4 @@
-📌 Project Overview
+ #📌 Project Overview
 
 The Number Guessing Game is a beginner-friendly Java project that demonstrates the use of:
 
@@ -11,7 +11,7 @@ The Number Guessing Game is a beginner-friendly Java project that demonstrates t
 
 The game continues until the user correctly guesses the generated number.
 
-🚀 Features
+#🚀 Features
 
 ✅ Random number generation between 1 and 100
 
@@ -28,19 +28,19 @@ Too Low
 
 ✅ Lightweight and easy to understand
 
-🛠️ Technologies Used
+#🛠️ Technologies Used
 Java
 IntelliJ IDEA / VS Code
 Java Scanner Class
 Java Random Class
 
-📂 Project Structure
+#📂 Project Structure
 NumberGuessingGame/
 │
 ├── KalisettiJagadeshwarRao_2.java
 └── README.md
 
-💻 How It Works
+#💻 How It Works
 The program generates a random number between 1 and 100.
 The user enters a guess.
 The program compares the guess with the generated number.
@@ -50,7 +50,7 @@ Higher → "Too high! Try again."
 Correct → Displays a congratulatory message.
 The total number of attempts is displayed when the user wins.
 
-▶️ Sample Output
+#▶️ Sample Output
 Welcome to the Number Guessing Game!
 I have selected a number between 1 and 100. Can you guess it?
 
