@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class KalisettiJagadeshwarRao_2 {
     public static void main(String[] args) {
         Random random = new Random();
-        int numberToGuess = random.nextInt(100) + 1; // Generates a number between 1 and 100
+        int numberToGuess = random.nextInt(100) + 1; 
         int numberOfAttempts = 0;
         boolean hasGuessedCorrectly = false;
 
