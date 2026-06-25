@@ -1,4 +1,6 @@
- # Project Description
+ # NUMBER GUESSING GAME
+ 
+ ## Description
 
 The Number Guessing Game is a beginner-friendly Java project that demonstrates the use of:
 
