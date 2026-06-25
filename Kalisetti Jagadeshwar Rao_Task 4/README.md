@@ -26,7 +26,6 @@ The **Online Examination System** is a Java console-based application that simul
 ```
 OnlineExamination/
 ├── OnlineExamination.java
-├── OnlineExamination$1.class
 └── README.md
 ```
 
