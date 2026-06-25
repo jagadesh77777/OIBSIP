@@ -42,7 +42,6 @@ The game continues until the user correctly guesses the generated number.
 
  NumberGuessingGame/ <br>
  │ <br>
- ├── NumberGuessingGame.class <br>
  ├── NumberGuessingGame.java <br>
  └── README.md <br>
 
