@@ -12,25 +12,25 @@ The Number Guessing Game is a beginner-friendly Java project that demonstrates t
 - Console-based interaction
 
 The game continues until the user correctly guesses the generated number.
-<br>
+
 
 ## Features
 
-✅ Random number generation between 1 and 100
+- Random number generation between 1 and 100
 
-✅ User-friendly console interface
+- User-friendly console interface
 
-✅ Hint system:
+ Hint system:
 
 - Too High
 - Too Low
 
-✅ Tracks the number of attempts
+- Tracks the number of attempts
 
-✅ Ends only when the correct number is guessed
+- Ends only when the correct number is guessed
 
-✅ Lightweight and easy to understand
-<br>
+- Lightweight and easy to understand
+  
 
 ## Technologies Used
 
@@ -71,3 +71,9 @@ Too high! Try again.
 
 Enter your guess: 62
 Too low! Try again.
+
+## Author
+
+Kalisetti Jagadeshwar Rao
+
+Java Development Internship Project – Oasis Infobyte
