@@ -15,10 +15,10 @@ INSERT INTO users (login_id, password, full_name, role) VALUES
 ('manager', 'mgr2024',  'Sunita Verma',     'Station Manager');
 
 CREATE TABLE IF NOT EXISTS trains (
-    train_no    VARCHAR(10)  PRIMARY KEY,        -- Train number (e.g., 12301)
-    train_name  VARCHAR(100) NOT NULL,           -- Full train name
-    from_station VARCHAR(60) NOT NULL,           -- Origin station
-    to_station  VARCHAR(60)  NOT NULL            -- Destination station
+    train_no    VARCHAR(10)  PRIMARY KEY,        
+    train_name  VARCHAR(100) NOT NULL,           
+    from_station VARCHAR(60) NOT NULL,          
+    to_station  VARCHAR(60)  NOT NULL            
 );
 
 INSERT INTO trains (train_no, train_name, from_station, to_station) VALUES
