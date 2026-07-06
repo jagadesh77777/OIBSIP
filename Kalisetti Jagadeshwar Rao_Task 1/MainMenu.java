@@ -84,7 +84,7 @@ public class MainMenu extends JFrame {
                 new LoginForm();       
             }
         });
-
+        
         headerRight.add(lblUser);
         headerRight.add(lblRole);
         headerRight.add(btnLogout);
@@ -104,10 +104,6 @@ public class MainMenu extends JFrame {
         statsPanel.add(createStatCard("Cancelled",         lblTotalCancelled, new Color(185, 28, 28)));
         statsPanel.add(createStatCard("Today's Bookings", lblTodayBookings,  new Color(21, 128, 61)));
 
-        // ============================================================
-        // NAVIGATION PANEL
-        // Main action buttons: Reservation and Cancellation
-        // ============================================================
         JPanel navPanel = new JPanel(new GridLayout(1, 2, 20, 0));
         navPanel.setBackground(new Color(240, 244, 250));
         navPanel.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25));
@@ -128,9 +124,6 @@ public class MainMenu extends JFrame {
             e -> openCancellationForm()
         ));
 
-        // ============================================================
-        // INFO PANEL — Quick help text
-        // ============================================================
         JPanel infoPanel = new JPanel(new BorderLayout());
         infoPanel.setBackground(new Color(240, 244, 250));
         infoPanel.setBorder(BorderFactory.createEmptyBorder(6, 25, 10, 25));
@@ -151,9 +144,6 @@ public class MainMenu extends JFrame {
         txtInfo.setEditable(false);  // Read-only text area
         infoPanel.add(txtInfo, BorderLayout.CENTER);
 
-        // ============================================================
-        // FOOTER PANEL
-        // ============================================================
         JPanel footerPanel = new JPanel(new BorderLayout());
         footerPanel.setBackground(new Color(25, 42, 86));
         footerPanel.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20));
@@ -166,7 +156,6 @@ public class MainMenu extends JFrame {
         lblFooter.setForeground(new Color(160, 180, 220));
         footerPanel.add(lblFooter, BorderLayout.CENTER);
 
-        // ---- Assemble all panels ----
         JPanel centerPanel = new JPanel(new GridLayout(3, 1, 0, 0));
         centerPanel.setBackground(new Color(240, 244, 250));
         centerPanel.add(statsPanel);
@@ -180,18 +169,6 @@ public class MainMenu extends JFrame {
         add(outerPanel);
     }
 
-
-    // ============================================================
-    // METHOD: createStatCard(title, valueLabel, color)
-    // Creates a small colored card showing a statistic.
-    //
-    // Parameters:
-    //   title      - Label text (e.g., "Total Bookings")
-    //   valueLabel - JLabel whose text will be set with the count
-    //   color      - Background color of the card
-    //
-    // Returns: JPanel (the stat card)
-    // ============================================================
     private JPanel createStatCard(String title, JLabel valueLabel, Color color) {
 
         JPanel card = new JPanel(new GridLayout(2, 1));
@@ -212,13 +189,6 @@ public class MainMenu extends JFrame {
         return card;
     }
 
-
-    // ============================================================
-    // METHOD: createNavButton(icon, title, subtitle, color, listener)
-    // Creates a large navigation button with an icon and subtitle.
-    //
-    // Returns: JPanel acting as a clickable button card
-    // ============================================================
     private JPanel createNavButton(String icon, String title, String subtitle,
                                     Color bgColor, ActionListener listener) {
 
@@ -242,20 +212,17 @@ public class MainMenu extends JFrame {
         card.add(lblTitle);
         card.add(lblSub);
 
-        // Make the entire panel clickable by adding a MouseListener
         card.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 listener.actionPerformed(new ActionEvent(card, ActionEvent.ACTION_PERFORMED, "click"));
             }
 
-            // Hover effect: darken slightly on mouse enter
             @Override
             public void mouseEntered(MouseEvent e) {
                 card.setBackground(bgColor.darker());
             }
 
-            // Restore color on mouse exit
             @Override
             public void mouseExited(MouseEvent e) {
                 card.setBackground(bgColor);
@@ -265,17 +232,6 @@ public class MainMenu extends JFrame {
         return card;
     }
 
-
-    // ============================================================
-    // METHOD: loadStatistics()
-    // Fetches live booking counts from the database and
-    // updates the three stat card labels.
-    //
-    // SQL Queries Used:
-    //   SELECT COUNT(*) FROM reservations
-    //   SELECT COUNT(*) FROM reservations WHERE status = 'Cancelled'
-    //   SELECT COUNT(*) FROM reservations WHERE booking_date = CURDATE()
-    // ============================================================
     private void loadStatistics() {
 
         Connection conn = null;
@@ -288,22 +244,18 @@ public class MainMenu extends JFrame {
 
             stmt = conn.createStatement();
 
-            // Total bookings count
             rs = stmt.executeQuery("SELECT COUNT(*) FROM reservations");
             if (rs.next()) lblTotalBookings.setText(String.valueOf(rs.getInt(1)));
             rs.close();
 
-            // Cancelled tickets count
             rs = stmt.executeQuery("SELECT COUNT(*) FROM reservations WHERE status = 'Cancelled'");
             if (rs.next()) lblTotalCancelled.setText(String.valueOf(rs.getInt(1)));
             rs.close();
 
-            // Today's bookings count
             rs = stmt.executeQuery("SELECT COUNT(*) FROM reservations WHERE booking_date = CURDATE()");
             if (rs.next()) lblTodayBookings.setText(String.valueOf(rs.getInt(1)));
 
         } catch (SQLException e) {
-            // If DB is not connected, just show dashes — don't crash
             lblTotalBookings.setText("—");
             lblTotalCancelled.setText("—");
             lblTodayBookings.setText("—");
@@ -318,31 +270,14 @@ public class MainMenu extends JFrame {
         }
     }
 
-
-    // ============================================================
-    // METHOD: openReservationForm()
-    // Opens the Reservation Form window.
-    // This window opens on top of (not replacing) the Main Menu.
-    // ============================================================
     private void openReservationForm() {
-        new ReservationForm(this);  // Pass 'this' so form can refresh stats on close
+        new ReservationForm(this);  
     }
 
-
-    // ============================================================
-    // METHOD: openCancellationForm()
-    // Opens the Cancellation Form window.
-    // ============================================================
     private void openCancellationForm() {
         new CancellationForm(this);
     }
 
-
-    // ============================================================
-    // METHOD: refreshStats()
-    // Called by ReservationForm and CancellationForm after
-    // they complete an operation, to update the stat cards.
-    // ============================================================
     public void refreshStats() {
         loadStatistics();
     }
